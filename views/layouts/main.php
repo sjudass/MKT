@@ -31,7 +31,7 @@ AppAsset::register($this);
     <div class="container">
         <div class="row header_top">
             <div class="logo col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <a href="/"><img src="images/logo.png"></a>
+                <a href="/"><img src="../images/logo.png"></a>
             </div>
             <div class="btn_top_wrap col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="btn_and_search">
@@ -61,10 +61,39 @@ AppAsset::register($this);
     <div class="container-fluid menu_top">
         <div class="container">
             <div class="row">
-                <nav>
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <?php
+                    NavBar::begin([
+                            'brandUrl' => Yii::$app->homeUrl,
+                            'options' => [
+                                    'class' => ' ',
+                            ],
+                    ]);
+                    echo Nav::widget([
+                            'options' => ['class' => 'navbar-nav'],
+                            'items' => [
+                                    ['label' => 'Главная', 'url' => ['/site/index']],
+                                    ['label' => 'Ноутбуки', 'url' => ['/page/listproducts']],
+                                    ['label' => 'Компьютеры', 'url' => ['/page/listproducts']],
+                                    ['label' => 'Смартфоны', 'url' => ['/page/listproducts']],
+                                    ['label' => 'Телевизоры', 'url' => ['/page/listproducts']],
+                                    ['label' => 'Приставки', 'url' => ['/page/listproducts']],
+/*                                    Yii::$app->user->isGuest ? (['label' => '', 'url' => ['#']]) : (
+                                            '<li>'
+                                            . Html::beginForm(['/site/logout'], 'post')
+                                            . Html::submitButton(
+                                                    'Logout (' . Yii::$app->user->identity->username . ')',
+                                                            ['class' => 'btn btn-link logout']
+                                            )
+                                            . Html::endForm()
+                                            . '</li>'
+                                    )*/
+                            ],
+                    ]);
+                    NavBar::end();
+
+                    ?>
+<!--                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -72,8 +101,8 @@ AppAsset::register($this);
                         </button>
                     </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <div class="collapse navbar-collapse" id="w0-collapse">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="#">Ноутбуки</a></li>
                             <li><a href="#">Компьютеры</a></li>
@@ -81,8 +110,7 @@ AppAsset::register($this);
                             <li><a href="#">Телевизоры</a></li>
                             <li><a href="#">Приставки</a></li>
                         </ul>
-                    </div><!-- /.navbar-collapse -->
-                </nav>
+                    </div>-->
             </div>
         </div>
     </div>
@@ -93,7 +121,7 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ban_block ban1">
             <div>
-                <img src="images/ban1.jpg">
+                <img src="../images/ban1.jpg">
                 <a href="#">
                     <h2>Игровые ноутбуки</h2>
                     <p>Выбор <br> настоящего <br> геймера</p>
@@ -103,7 +131,7 @@ AppAsset::register($this);
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ban_block">
             <div>
-                <img src="images/ban2.jpg">
+                <img src="../images/ban2.jpg">
                 <a href="#">
                     <h2>Решения для бизнеса</h2>
                     <p>Безопасное хранение и оперативная обработка данных</p>
@@ -132,7 +160,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -149,7 +177,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -166,7 +194,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -183,7 +211,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -202,7 +230,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -219,7 +247,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -238,7 +266,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -255,7 +283,7 @@ AppAsset::register($this);
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="images/prod1.jpg">
+                                <img src="../images/prod1.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
