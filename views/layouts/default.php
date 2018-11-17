@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -19,6 +20,7 @@ DefaultAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -36,9 +38,9 @@ DefaultAsset::register($this);
             <div class="btn_top_wrap col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="btn_and_search">
                     <div class="btn_top">
-                        <a href="#"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
-                        <a href="#"><i class="glyphicon glyphicon-user"></i>Личный кабинет</a>
-                        <a href="#"><i class="glyphicon glyphicon-lock"></i>Войти</a>
+                        <a href="<?=Url::toRoute('page/feedback');?>"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
+                        <a href="<?=Url::toRoute('page/personal');?>"><i class="glyphicon glyphicon-user"></i>Личный кабинет</a>
+                        <a href="<?=Url::toRoute('page/login');?>"><i class="glyphicon glyphicon-lock"></i>Войти</a>
                     </div>
                     <div class="search_top">
                         <form>
@@ -74,11 +76,9 @@ DefaultAsset::register($this);
                     'options' => ['class' => 'navbar-nav'],
                     'items' => [
                         ['label' => 'Главная', 'url' => ['/site/index']],
-                        ['label' => 'Ноутбуки', 'url' => ['/page/listproducts']],
-                        ['label' => 'Компьютеры', 'url' => ['#']],
-                        ['label' => 'Смартфоны', 'url' => ['#']],
-                        ['label' => 'Телевизоры', 'url' => ['#']],
-                        ['label' => 'Приставки', 'url' => ['#']],
+                        ['label' => 'Каталог', 'url' => ['/page/catalog']],
+                        ['label' => 'Новости', 'url' => ['/page/news']],
+                        ['label' => 'Контакты', 'url' => ['/page/contacts']],
 /*                        Yii::$app->user->isGuest ? (
                         ['label' => 'Login', 'url' => ['/site/login']]
                         ) : (
@@ -114,180 +114,7 @@ DefaultAsset::register($this);
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 filter">
-            <h3>Фильтры</h3>
-            <form>
-                <label>Цена / руб</label>
-                <div class="filter_price">
-                    <input type="text" value="0">
-                    -
-                    <input type="text" value="500000">
-                </div>
-                <label>Диагональ экрана/ "</label>
-                <div class="filter_check">
-                    <p><input type="checkbox"/>от 10" до 12.6"</p>
-                    <p><input type="checkbox"/>от 13" до 14.4"</p>
-                    <p><input type="checkbox"/>от 15" до 16.4"</p>
-                    <p><input type="checkbox"/>17" и более</p>
-                </div>
-
-                <button type="submit">Подобрать</button>
-            </form>
-        </div>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div class="short_description">
-                <img src="../images/prod1.jpg">
-                <div>
-                    <h2>Ноутбуки</h2>
-                    <p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header_list_prod">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                            <h1>Ноутбуки</h1>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 value_prod">
-                            <p>В наличии: 6</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 sortirovka_and_number_prod">
-                            <form action="#">
-                                <p><strong>Сортировка по:</strong>
-                                    <select name="sortirovka_prod">
-                                        <option selected="selected">--</option>
-                                        <option value="0">Цене, по возрастанию</option>
-                                        <option value="1">Цене, по убыванию</option>
-                                        <option value="2">Названию товара, от А до Я</option>
-                                        <option value="3">Названию товара, от Я до А</option>
-                                    </select>
-                                </p>
-                                <p><strong>Показать:</strong>
-                                    <select name="number_prod_str">
-                                        <option selected="selected">12</option>
-                                        <option value="0">24</option>
-                                        <option value="1">48</option>
-                                    </select>
-                                </p>
-                                <button type="submit">Go</button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs view_list_prod">
-                            <p><strong>Вид:</strong>
-                                <a href="#"><i class="glyphicon glyphicon-th"></i><span>Сетка</span></a>
-                                <a href="#"><i class="glyphicon glyphicon-th-list"></i><span>Список</span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                    <div class="product">
-                        <a href="#" class="product_img">
-                            <span>-10%</span>
-                            <img src="../images/prod1.jpg">
-                        </a>
-                        <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
-                        <div class="product_price">
-                            <span class="price">49 999 руб</span>
-                            <span class="price_old">54 999 руб</span>
-                        </div>
-                        <div class="product_btn">
-                            <a href="#" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="#" class="mylist">Список желаний</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?=$content;?>
     </div>
 </div>
 
@@ -330,17 +157,16 @@ DefaultAsset::register($this);
                 <div class="footer_menu">
                     <h3>Информация</h3>
                     <ul>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Скидки</a></li>
-                        <li><a href="#">Карта сайта</a></li>
+                        <li><a href="<?=Url::toRoute('page/delivery');?>">Доставка</a></li>
+                        <li><a href="<?=Url::toRoute('page/payment');?>">Оплата</a></li>
+                        <li><a href="<?=Url::toRoute('page/about');?>">О компании</a></li>
+                        <li><a href="<?=Url::toRoute('page/discounts');?>">Скидки</a></li>
                     </ul>
                 </div>
                 <div class="footer_menu">
                     <h3>Учетная запись</h3>
                     <ul>
-                        <li><a href="#">Войти</a></li>
+                        <li><a href="<?=Url::toRoute('page/login');?>">Войти</a></li>
                         <li><a href="#">Зарегистрироваться</a></li>
                         <li><a href="#">Мои заказы</a></li>
                         <li><a href="#">Список желаний</a></li>
