@@ -9,11 +9,37 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Categories;
+use app\models\Products;
+use app\models\SortForm;
 
 
 /*Контроллер для страниц магазина*/
 class PageController extends Controller
 {
+    /*
+     * Для страницы списка желаний*/
+    public function actionListorder()
+    {
+        // $categories = Categories::find()->asArray()->all();
+        return $this->render('listorder');
+    }
+
+    /*
+     * Для страницы корзины*/
+    public function actionCart()
+    {
+        // $categories = Categories::find()->asArray()->all();
+        return $this->render('cart');
+    }
+
+    /*
+     * Для страницы каталога*/
+    public function actionProduct()
+    {
+       // $categories = Categories::find()->asArray()->all();
+        return $this->render('product');
+    }
+
     /*
      * Для страницы каталога*/
     public function actionCatalog()
@@ -30,7 +56,26 @@ class PageController extends Controller
             $categories = Categories::find()->where(['id' => $_GET['id']])->asArray()->one();
             if(count($categories) > 0)
             {
-                return $this->render('listproducts', compact('categories'));
+                $model = new SortForm();
+
+                if($model->load(Yii::$app->request->post()) && $model->validate())
+                {
+                   /* echo "<pre>";
+                    print_r($model);
+                    echo "</pre>";*/
+                   //Обработчик для формы сортировки
+                }
+
+                $products_array = Products::find()->where(['category_id' => $_GET['id']])->asArray()->all();
+                $count_products = count($products_array);
+                if (isset($_GET['view']) && $_GET['view'] == 1)
+                {
+                    $view = 1;
+                }
+                else{
+                    $view = 0;
+                }
+                return $this->render('listproducts', compact('categories','products_array', 'count_products','view','model'));
             }
         }
             return $this->redirect(['page/catalog']);

@@ -2,6 +2,16 @@
 use yii\helpers\Url;
 $this->title = 'Каталог';
 ?>
+<div class="row">
+    <div class="col-lg-12 contant_wrap">
+        <div class="navigation">
+            <ul>
+                <li><a href="/site/index"><i class="glyphicon glyphicon-home"></i></a></li>
+                <li><span>Каталог</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 left_banner_menu">
     <h1>Баннерное меню</h1>
 </div>

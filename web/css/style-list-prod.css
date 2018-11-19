@@ -235,15 +235,28 @@ header{
 .product_btn{
 	overflow: hidden;
 }
+.product_btn.spisok{
+	overflow: hidden;
+	float: left;
+	margin-left: 5%;
+}
 .product .product_title{
 	color:#333;
 	font-size:16px;
-	margin:10px 0 5px;
+	margin:5px 0 5px;
 	display: block;
+}
+.product .product_title.spisok{
+	margin-left: 5%;
+	display: inline;
 }
 .product .price{
 	font-size:26px;
 	color:#ff5b23;
+}
+.product_price.spisok{
+	float: left;
+	margin-left: 5%;
 }
 .product .price_old{
 	font-size: 16px;
@@ -765,7 +778,12 @@ header{
 	color: #fff;
 	text-decoration: none;
 }
-#bs-example-navbar-collapse-1 li a:hover{
+#w0.navbar{
+	margin-bottom: 0px;
+	border: 0px solid transparent;
+}
+
+#w0-collapse li a:hover{
 	color:#ff5b23;
 }
 .value_cart input{
@@ -789,6 +807,15 @@ header{
 .value_cart span:hover{
 	opacity: 0.9;
 }
+.field-sortform-number{
+	width: 65px;
+}
+.sortirovka_and_number_prod .form-group{
+	display: inline-block;
+}
+.sortirovka_and_number_prod .control-label{
+	display: none;
+}
 .sortirovka_and_number_prod p{
 	display: inline-block;
 	margin-right: 10px;
@@ -809,7 +836,6 @@ header{
 .view_list_prod i{
 	display: block;
 	font-size: 24px;
-	color:#333;
 }
 .view_list_prod a{
 	text-align: center;
@@ -820,7 +846,7 @@ header{
 .view_list_prod a:hover{
 	text-decoration: none;
 }
-.view_list_prod a:last-child i{
+.view_list_prod a i{
 	color:#ccc;
 }
 .view_list_prod a:hover i{
@@ -887,7 +913,7 @@ header{
 	z-index: 1;
 }
 .catalog .catalog_category img{
-	-webkit-transition: all 1s;
+	-webkit-transition: all 1s ease;
 	-moz-transition: all 1s ease;
 	-ms-transition: all 1s ease;
 	-o-transition: all 1s ease;
@@ -899,6 +925,19 @@ header{
 .catalog a:last-child:hover{
 	text-decoration: none;
 	opacity: 0.8;
+}
+.view_list .product{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.view_list .product .product_img{
+	width: 35%;
+	display: block;
+	float: left;
+}
+.view_list .product .desc_product{
+	float: right;
+	width: 60%;
 }
 @media all and (max-width: 1200px) and (min-width: 992px){
 	.ban_block p {

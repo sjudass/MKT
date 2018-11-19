@@ -103,17 +103,6 @@ DefaultAsset::register($this);
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 contant_wrap">
-            <div class="navigation">
-                <ul>
-                    <li><a href="/site/index"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="/site/index">Главная</a></li>
-                    <li><span>Ноутбуки</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="row">
             <?=$content;?>
     </div>
 </div>
