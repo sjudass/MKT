@@ -248,6 +248,7 @@ header{
 }
 .product .product_title.spisok{
 	margin-left: 5%;
+	margin-right: 10%;
 	display: inline;
 }
 .product .price{
@@ -938,6 +939,15 @@ header{
 .view_list .product .desc_product{
 	float: right;
 	width: 60%;
+}
+.form-button{
+	color: #fff;
+	background-color: #333;
+	border: 0px;
+	height: 33px;
+}
+.non-border{
+	border-radius: 0px;
 }
 @media all and (max-width: 1200px) and (min-width: 992px){
 	.ban_block p {

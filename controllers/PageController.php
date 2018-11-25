@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -60,14 +61,57 @@ class PageController extends Controller
 
                 if($model->load(Yii::$app->request->post()) && $model->validate())
                 {
-                   /* echo "<pre>";
-                    print_r($model);
-                    echo "</pre>";*/
+                    switch ($model->sortby){
+                        case "":
+                            $query_select = Products::find()->where(['category_id' => $_GET['id']]);
+                            break;
+                        case 0:
+                            $query_select = Products::find()->orderBy(['price' => SORT_ASC])->where(['category_id' => $_GET['id']]);
+                            break;
+                        case 1:
+                            $query_select = Products::find()->orderBy(['price' => SORT_DESC])->where(['category_id' => $_GET['id']]);
+                            break;
+                        case 2:
+                            $query_select = Products::find()->orderBy('name')->where(['category_id' => $_GET['id']]);
+                            break;
+                        case 3:
+                            $query_select = Products::find()->orderBy('name DESC')->where(['category_id' => $_GET['id']]);
+                            break;
+                    }
+
+                    switch ($model->number){
+                        case 12:
+                        {
+                            $size = 12;
+                            break;
+                        }
+                        case 24:
+                        {
+                            $size = 24;
+                            break;
+                        }
+
+                        case 48:
+                        {
+                            $size = 48;
+                            break;
+                        }
+
+                    }
+                    $query = $query_select;
+                    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => $size]);
+                    $products_array = $query->offset($pages->offset)->limit($pages->limit)->all();
                    //Обработчик для формы сортировки
                 }
+                else
+                {
+                    $query = Products::find()->where(['category_id' => $_GET['id']]);
+                    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
+                    $products_array = $query->offset($pages->offset)->limit($pages->limit)->all();
+                }
+                $counts = Products::find()->where(['category_id' => $_GET['id']])->asArray()->all();
+                $count_products = count($counts);
 
-                $products_array = Products::find()->where(['category_id' => $_GET['id']])->asArray()->all();
-                $count_products = count($products_array);
                 if (isset($_GET['view']) && $_GET['view'] == 1)
                 {
                     $view = 1;
@@ -75,7 +119,7 @@ class PageController extends Controller
                 else{
                     $view = 0;
                 }
-                return $this->render('listproducts', compact('categories','products_array', 'count_products','view','model'));
+                return $this->render('listproducts', compact('categories','products_array', 'count_products','view','model','pages'));
             }
         }
             return $this->redirect(['page/catalog']);

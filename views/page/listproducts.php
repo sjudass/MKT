@@ -72,7 +72,7 @@ $this->title = 'Список товаров';
                             '48' => '48'
                         ],
                             ['options' => ['12' => ['Selected' => true]],]);?></p>
-                    <?php echo Html::submitButton('Go');?>
+                    <?php echo Html::submitButton('Применить',['class' => 'form-button']);?>
                    <?php ActiveForm::end();?>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs view_list_prod">
@@ -96,15 +96,15 @@ $this->title = 'Список товаров';
                     <div class="product">
                         <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_img">
                             <?php if($product_array['price_old'] != ""):?>
-                                <span>-<?php echo 100 - intval(intval($product_array['price']) * 100 / intval($product_array['price_old']));?>%</span>
+                                <span>-<?php echo 100 - intval($product_array['price'] * 100 / $product_array['price_old']);?>%</span>
                             <?php endif;?>
                             <img src="../images/<?php echo $product_array['img'];?> ">
                         </a>
                         <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_title spisok"><?php echo $product_array['name'];?></a>
                         <div class="product_price spisok">
-                            <span class="price"><?php echo $product_array['price'];?> руб</span>
+                            <span class="price"><?php echo number_format($product_array['price'], 0, '.', ' ');?> руб</span>
                             <?php if($product_array['price_old'] != ""):?>
-                                <span class="price_old"><?php echo $product_array['price_old'];?> руб</span>
+                                <span class="price_old"><?php echo number_format($product_array['price_old'], 0, '.', ' ');?> руб</span>
                             <?php endif;?>
                         </div>
 
@@ -131,21 +131,20 @@ $this->title = 'Список товаров';
                         </div>
                     </div>
                 </div>
-
             <?php else:?>
                 <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
                     <div class="product">
                         <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_img">
                             <?php if($product_array['price_old'] != ""):?>
-                                <span>-<?php echo 100 - intval(intval($product_array['price']) * 100 / intval($product_array['price_old']));?>%</span>
+                                <span>-<?php echo 100 - intval($product_array['price'] * 100 / $product_array['price_old']);?>%</span>
                             <?php endif;?>
                             <img src="../images/<?php echo $product_array['img'];?> ">
                         </a>
                         <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_title"><?php echo $product_array['name'];?></a>
                         <div class="product_price">
-                            <span class="price"><?php echo $product_array['price'];?> руб</span>
+                            <span class="price"><?php echo number_format($product_array['price'], 0, '.', ' ');?> руб</span>
                             <?php if($product_array['price_old'] != ""):?>
-                                <span class="price_old"><?php echo $product_array['price_old'];?> руб</span>
+                                <span class="price_old"><?php echo number_format($product_array['price_old'], 0, '.', ' ');?> руб</span>
                             <?php endif;?>
                         </div>
 
@@ -159,4 +158,7 @@ $this->title = 'Список товаров';
 
         <?php endforeach;?>
     </div>
+    <?= \yii\widgets\LinkPager::widget([
+        'pagination' => $pages,
+    ]); ?>
 </div>
