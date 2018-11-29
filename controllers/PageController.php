@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 
+use app\models\Characteristics;
+use app\models\Reviews;
+use app\models\Users;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -37,8 +40,25 @@ class PageController extends Controller
      * Для страницы каталога*/
     public function actionProduct()
     {
-       // $categories = Categories::find()->asArray()->all();
-        return $this->render('product');
+        if (isset($_GET['id']) && $_GET['id'] != "" && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+            $product = Products::find()->where(['id' => $_GET['id']])->asArray()->one();
+            if(count($product) > 0)
+            {
+                $characteristics = Characteristics::find()->where(['id_prod' => $product['id']])->asArray()->all();
+                $reviews = Reviews::find()->where(['id_prod' => $product['id']])->asArray()->all();
+                foreach ($reviews as $review){
+                    $users = Users::find()->where(['id' => $review['id_user']])->asArray()->all();
+                }
+                if (isset($_GET['category']))
+                {
+                    $category = $_GET['category'];
+                    $category_id = $_GET['category_id'];
+                }
+
+                return $this->render('product', compact('product','characteristics', 'reviews', 'users','category', 'category_id'));
+            }
+        }
+        return $this->redirect(['page/listproducts?id='.$_GET['category_id']]);
     }
 
     /*

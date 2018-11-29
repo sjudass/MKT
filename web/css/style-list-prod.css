@@ -617,7 +617,13 @@ header{
 	margin-left: 5px;
 }
 
+.not-allowed{
+	cursor: not-allowed;
 
+}
+.pointer{
+	pointer-events: none;
+}
 
 
 /*Карточка товара*/
@@ -625,6 +631,14 @@ header{
 	text-align: center;
 	padding:20px 0;
 	border: 1px solid #eaeaea;
+}
+.img_product{
+	text-align: center;
+	border: 1px solid #eaeaea;
+	overflow: hidden;
+}
+.img_product img{
+	max-width: 350px;
 }
 .h_prod{
 	margin:30px 0 20px;

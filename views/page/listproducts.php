@@ -94,13 +94,13 @@ $this->title = 'Список товаров';
             <?php if($view == 1):?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 view_list">
                     <div class="product">
-                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_img">
+                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id'], 'category' => $categories['name'], 'category_id' =>$categories['id']]);?>" class="product_img">
                             <?php if($product_array['price_old'] != ""):?>
                                 <span>-<?php echo 100 - intval($product_array['price'] * 100 / $product_array['price_old']);?>%</span>
                             <?php endif;?>
                             <img src="../images/<?php echo $product_array['img'];?> ">
                         </a>
-                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_title spisok"><?php echo $product_array['name'];?></a>
+                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id'], 'category' => $categories['name'],'category_id' =>$categories['id']]);?>" class="product_title spisok"><?php echo $product_array['name'];?></a>
                         <div class="product_price spisok">
                             <span class="price"><?php echo number_format($product_array['price'], 0, '.', ' ');?> руб</span>
                             <?php if($product_array['price_old'] != ""):?>
@@ -134,13 +134,13 @@ $this->title = 'Список товаров';
             <?php else:?>
                 <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
                     <div class="product">
-                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_img">
+                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id'], 'category' => $categories['name'], 'category_id' =>$categories['id']]);?>" class="product_img">
                             <?php if($product_array['price_old'] != ""):?>
                                 <span>-<?php echo 100 - intval($product_array['price'] * 100 / $product_array['price_old']);?>%</span>
                             <?php endif;?>
                             <img src="../images/<?php echo $product_array['img'];?> ">
                         </a>
-                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id']]);?>" class="product_title"><?php echo $product_array['name'];?></a>
+                        <a href="<?=Url::toRoute(['page/product', 'id' => $product_array['id'], 'category' => $categories['name'], 'category_id' =>$categories['id']]);?>" class="product_title"><?php echo $product_array['name'];?></a>
                         <div class="product_price">
                             <span class="price"><?php echo number_format($product_array['price'], 0, '.', ' ');?> руб</span>
                             <?php if($product_array['price_old'] != ""):?>
