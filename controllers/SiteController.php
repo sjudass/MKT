@@ -102,8 +102,15 @@ class SiteController extends Controller
             if (!$user->findUser()){
                 if (($user->password) === ($user->confpass)){
                     $adduser = new User();
-                    $adduser->username = $user->username;
+                    $adduser->login = $user->login;
                     $adduser->password = $user->password;
+                    $adduser->username = $user->username;
+                    $adduser->user_surname = $user->user_surname;
+                    $adduser->email = $user->email;
+                    $adduser->phone= $user->phone;
+                    $adduser->region= $user->region;
+                    $adduser->city= $user->city;
+                    $adduser->isAdmin = 0;
                     $adduser->save();
                     $user->login();
                     return $this->goBack();

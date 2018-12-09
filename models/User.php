@@ -20,7 +20,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return 'user';
+        return 'users';
     }
 
     public static function findIdentity($id)
@@ -40,17 +40,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function getAuthKey()
     {
-        return $this->auth_key;
+
     }
 
     public function validateAuthKey($authKey)
     {
-        return $this->getAuthKey() === $authKey;
+
     }
 
-    public function findByUsername($username)
+    public function findByUsername($login)
     {
-        return static::findOne(['username' => $username]);
+        return static::findOne(['login' => $login]);
     }
 
     public function validatePassword($password)

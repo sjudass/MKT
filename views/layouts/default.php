@@ -38,9 +38,18 @@ DefaultAsset::register($this);
             <div class="btn_top_wrap col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="btn_and_search">
                     <div class="btn_top">
-                        <a href="<?=Url::toRoute('page/feedback');?>"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
-                        <a href="<?=Url::toRoute('page/personal');?>"><i class="glyphicon glyphicon-user"></i>Личный кабинет</a>
-                        <a href="<?=Url::toRoute('page/login');?>"><i class="glyphicon glyphicon-lock"></i>Войти</a>
+                            <?php if (Yii::$app->user->isGuest): ?>
+                                <a href="<?=Url::toRoute('site/login');?>"><i class="glyphicon glyphicon-log-in"></i>Войти</a>
+                                <a href="<?=Url::toRoute('site/register');?>"><i class="glyphicon glyphicon-pencil"></i>Зарегистрироваться</a>
+                            <?php else: ?>
+                                <form method="post" action="/site/logout">
+                                    <?php if (Yii::$app->user->identity['isAdmin'] > 0): ?>
+                                        <a href="<?=Url::toRoute('admin/index');?>"><i class="glyphicon glyphicon-user"></i>Панель администратора</a>
+                                    <?php endif;?>
+                                    <?= Html :: hiddenInput(\Yii :: $app->getRequest()->csrfParam, \Yii :: $app->getRequest()->getCsrfToken(), []);?>
+                                    <button type="submit" style="color:white; background-color: inherit; border: none"><a><i class="glyphicon glyphicon-log-out"></i>Выйти</a></button>
+                                </form>
+                            <?php endif;?>
                     </div>
                     <div class="search_top">
                         <form>
@@ -52,7 +61,7 @@ DefaultAsset::register($this);
                     </div>
                 </div>
                 <div class="cart_top">
-                    <a href="#">
+                    <a href="<?=Url::toRoute('page/cart');?>">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
                         <span>0</span>
                     </a>
@@ -177,7 +186,18 @@ DefaultAsset::register($this);
     </div>
 </div>
 
+<?php
+\yii\bootstrap\Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'id' => 'cart',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+                 <button type="button" class="btn btn-success">Оформить заказ</button>
+                 <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>'
+]);
 
+\yii\bootstrap\Modal::end();
+?>
 
 <?php $this->endBody() ?>
 </body>

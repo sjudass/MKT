@@ -38,9 +38,18 @@ AppAsset::register($this);
             <div class="btn_top_wrap col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="btn_and_search">
                     <div class="btn_top">
-                        <a href="<?=Url::toRoute('page/feedback');?>"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
-                        <a href="<?=Url::toRoute('page/personal');?>"><i class="glyphicon glyphicon-user"></i>Личный кабинет</a>
-                        <a href="<?=Url::toRoute('page/login');?>"><i class="glyphicon glyphicon-lock"></i>Войти</a>
+                        <?php if (Yii::$app->user->isGuest): ?>
+                            <a href="<?=Url::toRoute('site/login');?>"><i class="glyphicon glyphicon-log-in"></i>Войти</a>
+                            <a href="<?=Url::toRoute('site/register');?>"><i class="glyphicon glyphicon-pencil"></i>Зарегистрироваться</a>
+                        <?php else: ?>
+                            <form method="post" action="/site/logout">
+                                <?php if (Yii::$app->user->identity['isAdmin'] > 0): ?>
+                                    <a href="<?=Url::toRoute('admin/index');?>"><i class="glyphicon glyphicon-user"></i>Панель администратора</a>
+                                <?php endif;?>
+                                <?= Html :: hiddenInput(\Yii :: $app->getRequest()->csrfParam, \Yii :: $app->getRequest()->getCsrfToken(), []);?>
+                                <button type="submit" style="color:white; background-color: inherit; border: none"><a><i class="glyphicon glyphicon-log-out"></i>Выйти</a></button>
+                            </form>
+                        <?php endif;?>
                     </div>
                     <div class="search_top">
                         <form>
@@ -52,7 +61,7 @@ AppAsset::register($this);
                     </div>
                 </div>
                 <div class="cart_top">
-                    <a href="#">
+                    <a href="<?=Url::toRoute('page/cart');?>">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
                         <span>0</span>
                     </a>
@@ -155,11 +164,11 @@ AppAsset::register($this);
                 <div class="footer_menu">
                     <h3>Категории</h3>
                     <ul>
-                        <li><a href="#">Ноутбуки</a></li>
-                        <li><a href="#">Компьютеры</a></li>
-                        <li><a href="#">Смартфоны</a></li>
-                        <li><a href="#">Телевизоры</a></li>
-                        <li><a href="#">Приставки</a></li>
+                        <li><a href="<?=Url::toRoute('page/listproducts?id=1');?>">Ноутбуки</a></li>
+                        <li><a href="<?=Url::toRoute('page/listproducts?id=2');?>">Компьютеры</a></li>
+                        <li><a href="<?=Url::toRoute('page/listproducts?id=3');?>">Смартфоны</a></li>
+                        <li><a href="<?=Url::toRoute('page/listproducts?id=4');?>">Телевизоры</a></li>
+                        <li><a href="<?=Url::toRoute('page/listproducts?id=5');?>">Приставки</a></li>
                     </ul>
                 </div>
                 <div class="footer_menu">

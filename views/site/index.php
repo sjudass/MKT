@@ -22,7 +22,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -39,7 +39,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -56,7 +56,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -73,7 +73,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -92,7 +92,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -109,7 +109,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -128,7 +128,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">
@@ -145,7 +145,7 @@ $this->title = 'Интернет-магазин компьютерной тех�
                         <div class="product">
                             <a href="#" class="product_img">
                                 <span>-10%</span>
-                                <img src="../images/prod1.jpg">
+                                <img src="../images/laptop.jpg">
                             </a>
                             <a href="#" class="product_title">Lenovo Legion Y520-15IKBN</a>
                             <div class="product_price">

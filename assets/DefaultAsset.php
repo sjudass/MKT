@@ -25,7 +25,7 @@ class DefaultAsset extends AssetBundle
         'css/font-awesome-min.css'
     ];
     public $js = [
-        'js/script.js',
+        'js/scripts.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

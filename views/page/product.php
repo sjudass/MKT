@@ -98,7 +98,7 @@ $this->title = $product['name'];
                                 <div class="reviews_contant">
                                     <p class="reviews_title"><?=$user['username']?> <?=$user['user_surname']?><span><?=date("d.m.y",strtotime($review['data_create']));?></span></p>
                                     <div class="reviews_rating">
-                                        <?php for ($i = 0; $i <= $review['rating']; $i++):?>
+                                        <?php for ($i = 0; $i < $review['rating']; $i++):?>
                                             <i class="glyphicon glyphicon-star active"></i>
                                         <?php endfor;?>
                                     </div>
@@ -110,39 +110,32 @@ $this->title = $product['name'];
                     <?php else:?>
                         <h3>Отзывов пока нет</h3>
                     <?php endif;?>
-
-                    <?php if(isset($_SESSION['user'])):?>
-                    <div class="reviews_form">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>Отзыв о товаре:</p>
-                        </div>
-                        <form action="/" method="post">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="name" placeholder="Имя">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="email" placeholder="E-mail">
-                            </div>
-                            <div class="col-lg-12">
-                                <textarea name="text" placeholder="Отзыв"></textarea>
-                            </div>
-                            <div class="col-lg-12">
-                                <i class="glyphicon glyphicon-star"></i>
-                                <i class="glyphicon glyphicon-star"></i>
-                                <i class="glyphicon glyphicon-star"></i>
-                                <i class="glyphicon glyphicon-star"></i>
-                                <i class="glyphicon glyphicon-star"></i>
-                            </div>
-                            <div class="col-lg-12">
-                                <button>Добавить</button>
-                            </div>
-                        </form>
-                    </div>
-                    <?php else:?>
+                    <?php if (Yii::$app->user->isGuest): ?>
                         <div class="reviews_form">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <p>Чтобы оставить отзыв <a href="<?=Url::toRoute('page/personal');?>">зарегистрируйтесь</a></p>
                             </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="reviews_form">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>Отзыв о товаре:</p>
+                            </div>
+                            <form action="/" method="post">
+                                <div class="col-lg-12">
+                                    <textarea name="text" placeholder="Отзыв"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <i class="glyphicon glyphicon-star"></i>
+                                    <i class="glyphicon glyphicon-star"></i>
+                                    <i class="glyphicon glyphicon-star"></i>
+                                    <i class="glyphicon glyphicon-star"></i>
+                                    <i class="glyphicon glyphicon-star"></i>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button>Добавить</button>
+                                </div>
+                            </form>
                         </div>
                     <?php endif;?>
                 </div>

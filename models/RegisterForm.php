@@ -8,13 +8,19 @@ use yii\base\Model;
 class RegisterForm extends Model
 {
 
-    public $username;
+    public $login;
     public $password;
     public $confpass;
+    public $username;
+    public $user_surname;
+    public $email;
+    public $phone;
+    public $region;
+    public $city;
     public function rules()
     {
         return [
-            [['username', 'password', 'confpass'], 'required'],
+            [['login', 'password', 'confpass', 'username', 'user_surname', 'email', 'phone', 'region', 'city'], 'required'],
         ];
     }
 
@@ -22,15 +28,21 @@ class RegisterForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Логин',
+            'login' => 'Логин',
             'password' => 'Пароль',
             'confpass' => 'Подтвердите пароль',
+            'username' => 'Имя',
+            'user_surname' => 'Фамилия',
+            'email' => 'Электронная почта',
+            'phone' => 'Номер телефона',
+            'region' => 'Регион',
+            'city' => 'Город',
         ];
     }
 
     public function findUser()
     {
-        $user = User::findByUsername($this->username);
+        $user = User::findByUsername($this->login);
         return $user;
     }
 
