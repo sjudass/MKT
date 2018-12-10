@@ -55,7 +55,7 @@ class PageController extends Controller
                     $category_id = $_GET['category_id'];
                 }
 
-                return $this->render('product', compact('product','characteristics', 'reviews', 'users','category', 'category_id'));
+                return $this->render('product', compact('product','characteristics', 'category', 'category_id'));
             }
         }
         return $this->redirect(['page/listproducts?id='.$_GET['category_id']]);

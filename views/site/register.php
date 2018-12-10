@@ -11,14 +11,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Пожалуйста, заполните следующие поля для регистрации:</p>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'register-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+    <?php if(Yii::$app->session->hasFlash('error')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <?php echo Yii::$app->session->getFlash('error');?>
+        </div>
+    <?php endif;?>
+
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($user, 'login')->textInput(['autofocus' => true]) ?>
 
@@ -26,24 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($user, 'confpass')->passwordInput() ?>
 
-    <?= $form->field($user, 'username')->textInput() ?>
-
-    <?= $form->field($user, 'user_surname')->textInput() ?>
-
     <?= $form->field($user, 'email')->textInput() ?>
 
-    <?= $form->field($user, 'phone')->textInput() ?>
-
-    <?= $form->field($user, 'region')->textInput() ?>
-
-    <?= $form->field($user, 'city')->textInput() ?>
-
-    <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">
             <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-primary', 'name' => 'register-button']) ?>
             <?= Html::a('Вход', '/site/login', ['class' => 'btn btn-primary', 'name' => 'login-button', 'style' => 'width: 100px']) ?>
         </div>
-    </div>
 
     <?php ActiveForm::end(); ?>
 </div>

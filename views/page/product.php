@@ -11,7 +11,9 @@ $this->title = $product['name'];
             <ul>
                 <li><a href="/site/index"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><a href="/page/catalog">Каталог</a></li>
-                <li><a href="/page/listproducts?id=<?= $category_id?>"><?= $category;?></a></li>
+                <?php if (isset($category) && isset($category_id)):?>
+                    <li><a href="/page/listproducts?id=<?= $category_id?>"><?= $category;?></a></li>
+                <?php endif;?>
                 <li><span><?= $product['name'];?></span></li>
             </ul>
         </div>
@@ -32,7 +34,7 @@ $this->title = $product['name'];
                     <h1><?=$product['name']?></h1>
                     <p><span>Артикул:</span> <?=$product['article']?></p>
                     <?php if ($product['in_stock'] > 0):?>
-                        <p>В наличии: <?=$product['in_stock']?></p>
+                        <p id="instock" data-id="<?=$product['in_stock']?>">В наличии: <?=$product['in_stock']?></p>
                     <?php else:?>
                         <p style="color: red">Нет в наличии</p>
                     <?php endif;?>
@@ -49,11 +51,11 @@ $this->title = $product['name'];
                         <?php endif;?>
                         <p>Количество:</p>
                         <form>
-                            <input type="text" name="" value="1" class="input_text">
-                            <button>-</button>
-                            <button>+</button>
+                            <input type="text" id="addqty"  name="" value="1" class="input_text pointer">
+                            <button id="minus">-</button>
+                            <button id="plus">+</button>
                         </form>
-                        <a href="#" class="add_cart_prod"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
+                        <a href="<?=Url::toRoute(['/cart/add', 'id' => $product['id']]);?>" data-id="<?=$product['id'];?>" class="add_cart_prod cart"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
                         <a href="#" class="add_mylist_prod"><i class="glyphicon glyphicon-heart"></i>В список желаний</a>
                     </div>
                 <?php else:?>
@@ -64,9 +66,9 @@ $this->title = $product['name'];
                         <?php endif;?>
                         <p>Количество:</p>
                         <form>
-                            <input type="text" name="" value="1" class="input_text pointer">
-                            <button class="pointer">-</button>
-                            <button class="pointer">+</button>
+                            <input type="text" value="1" class="input_text pointer">
+                            <button id="minus" class="pointer">-</button>
+                            <button id="plus" class="pointer">+</button>
                         </form>
                         <a href="#" class="add_cart_prod pointer"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
                         <a href="#" class="add_mylist_prod pointer"><i class="glyphicon glyphicon-heart"></i>В список желаний</a>
@@ -86,37 +88,37 @@ $this->title = $product['name'];
                         <?php endforeach;?>
                     </table>
                 </div>
-                <div class="r_prod">
-                    <?php if (!empty($reviews)):?>
+<!--                <div class="r_prod">
+                    <?php /*if (!empty($reviews)):*/?>
                     <h3>Отзывы:</h3>
                     <div class="reviews">
-                        <?php foreach ($reviews as $review):?>
-                            <?php foreach ($users as $user):?>
+                        <?php /*foreach ($reviews as $review):*/?>
+                            <?php /*foreach ($users as $user):*/?>
                                 <div class="reviews_img">
                                     <img src="../images/avatar.png">
                                 </div>
                                 <div class="reviews_contant">
-                                    <p class="reviews_title"><?=$user['username']?> <?=$user['user_surname']?><span><?=date("d.m.y",strtotime($review['data_create']));?></span></p>
+                                    <p class="reviews_title"><?/*=$user['username']*/?> <?/*=$user['user_surname']*/?><span><?/*=date("d.m.y",strtotime($review['data_create']));*/?></span></p>
                                     <div class="reviews_rating">
-                                        <?php for ($i = 0; $i < $review['rating']; $i++):?>
+                                        <?php /*for ($i = 0; $i < $review['rating']; $i++):*/?>
                                             <i class="glyphicon glyphicon-star active"></i>
-                                        <?php endfor;?>
+                                        <?php /*endfor;*/?>
                                     </div>
-                                    <p class="reviews_text"><?=$review['text']?></p><br>
+                                    <p class="reviews_text"><?/*=$review['text']*/?></p><br>
                                 </div>
-                            <?php endforeach;?>
-                        <?php endforeach;?>
+                            <?php /*endforeach;*/?>
+                        <?php /*endforeach;*/?>
                     </div>
-                    <?php else:?>
+                    <?php /*else:*/?>
                         <h3>Отзывов пока нет</h3>
-                    <?php endif;?>
-                    <?php if (Yii::$app->user->isGuest): ?>
+                    <?php /*endif;*/?>
+                    <?php /*if (Yii::$app->user->isGuest): */?>
                         <div class="reviews_form">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <p>Чтобы оставить отзыв <a href="<?=Url::toRoute('page/personal');?>">зарегистрируйтесь</a></p>
+                                <p>Чтобы оставить отзыв <a href="<?/*=Url::toRoute('page/personal');*/?>">зарегистрируйтесь</a></p>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php /*else: */?>
                         <div class="reviews_form">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <p>Отзыв о товаре:</p>
@@ -137,8 +139,8 @@ $this->title = $product['name'];
                                 </div>
                             </form>
                         </div>
-                    <?php endif;?>
-                </div>
+                    <?php /*endif;*/?>
+                </div>-->
             </div>
         </div>
     </div>

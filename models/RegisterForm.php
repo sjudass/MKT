@@ -11,16 +11,12 @@ class RegisterForm extends Model
     public $login;
     public $password;
     public $confpass;
-    public $username;
-    public $user_surname;
     public $email;
-    public $phone;
-    public $region;
-    public $city;
+
     public function rules()
     {
         return [
-            [['login', 'password', 'confpass', 'username', 'user_surname', 'email', 'phone', 'region', 'city'], 'required'],
+            [['login', 'password', 'confpass', 'email'], 'required'],
         ];
     }
 
@@ -31,12 +27,7 @@ class RegisterForm extends Model
             'login' => 'Логин',
             'password' => 'Пароль',
             'confpass' => 'Подтвердите пароль',
-            'username' => 'Имя',
-            'user_surname' => 'Фамилия',
             'email' => 'Электронная почта',
-            'phone' => 'Номер телефона',
-            'region' => 'Регион',
-            'city' => 'Город',
         ];
     }
 

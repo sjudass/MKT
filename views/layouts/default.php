@@ -61,9 +61,13 @@ DefaultAsset::register($this);
                     </div>
                 </div>
                 <div class="cart_top">
-                    <a href="<?=Url::toRoute('page/cart');?>">
+                    <a id="cart_open" href="#" onclick="return getCart()">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
-                        <span>0</span>
+                        <?php if(isset($_SESSION['cart.qty'])):?>
+                            <span id="cart_qty"><?= $_SESSION['cart.qty'];?></span>
+                        <?php else: ?>
+                            <span id="cart_qty">0</span>
+                        <?php endif;?>
                     </a>
                 </div>
             </div>
@@ -191,8 +195,8 @@ DefaultAsset::register($this);
     'header' => '<h2>Корзина</h2>',
     'id' => 'cart',
     'size' => 'modal-lg',
-    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-                 <button type="button" class="btn btn-success">Оформить заказ</button>
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal" id="continue_shop">Продолжить покупки</button>
+                 <a href="'. Url::toRoute(['/cart/view']).'" class="btn btn-success">Оформить заказ</a>
                  <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>'
 ]);
 

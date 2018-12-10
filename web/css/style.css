@@ -91,6 +91,21 @@ header{
 	clear: both;
 	width:100%;
 }
+
+.cart_prod_content{
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.cart_prod_content .img_cart img{
+	display: block;
+	width: 100%;
+}
+
+.img_cart{
+	max-width: 50px;
+}
+
 .cart_top a span{
 	font-size: 30px;
 	display: inline-block;

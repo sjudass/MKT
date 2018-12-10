@@ -578,6 +578,13 @@ header{
 	display: block;
 	width: 100%;
 }
+
+#addorder{
+	padding-left: 20px;
+}
+.empty_cart{
+	min-height: 300px;
+}
 .cart_wrap .cart_prod_content td{
 	padding:20px;
 }
@@ -625,7 +632,13 @@ header{
 	pointer-events: none;
 }
 
+.del-item{
+	cursor: pointer;
+}
 
+.img_cart{
+	max-width: 50px;
+}
 /*Карточка товара*/
 .page_prod .img_prod{
 	text-align: center;
