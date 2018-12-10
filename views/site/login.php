@@ -11,33 +11,32 @@ $this->title = 'Вход';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
+    <div class="col-lg-4 col-md-6">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Пожалуйста, заполните следующие поля для входа:</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'login')->textInput(['autofocus' => true]) ?>
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
-
-    <?= $form->field($model, 'rememberMe')->checkbox([
-        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-    ]) ?>
-
-    <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('Войти', ['class' => 'btn btn-primary',  'name' => 'login-button', 'style' => 'width: 100px']) ?>
-            <?= Html::a('Регистрация', '/site/register', ['class' => 'btn btn-primary', 'name' => 'register-button' , 'style' => 'width: 160px']) ?>
+    <?php if(Yii::$app->session->hasFlash('error')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <?php echo Yii::$app->session->getFlash('error');?>
         </div>
+    <?php endif;?>
+
+        <?php $form = ActiveForm::begin(); ?>
+
+        <?= $form->field($model, 'login')->textInput(['autofocus' => true]) ?>
+
+        <?= $form->field($model, 'password')->passwordInput() ?>
+
+        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+
+        <?= Html::submitButton('Войти', ['class' => 'btn btn-primary',  'name' => 'login-button', 'style' => 'width: 100px']) ?>
+        <?= Html::a('Регистрация', '/site/register', ['class' => 'btn btn-primary', 'name' => 'register-button' , 'style' => 'width: 160px']) ?>
+
+        <?php ActiveForm::end(); ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
 </div>

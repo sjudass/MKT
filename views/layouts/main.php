@@ -117,7 +117,7 @@ AppAsset::register($this);
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ban_block ban1">
             <div>
                 <img src="../images/ban1.jpg">
-                <a href="#">
+                <a href="<?=Url::toRoute('page/listproducts?id=1');?>">
                     <h2>Игровые ноутбуки</h2>
                     <p>Выбор <br> настоящего <br> геймера</p>
                     <span>Подробнее</span>
@@ -127,7 +127,7 @@ AppAsset::register($this);
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ban_block">
             <div>
                 <img src="../images/ban2.jpg">
-                <a href="#">
+                <a href="<?=Url::toRoute('page/listproducts?id=1');?>">
                     <h2>Решения для бизнеса</h2>
                     <p>Безопасное хранение и оперативная обработка данных</p>
                     <span>Подробнее</span>
@@ -171,7 +171,6 @@ AppAsset::register($this);
                         <li><a href="<?=Url::toRoute('page/listproducts?id=1');?>">Ноутбуки</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=2');?>">Компьютеры</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=3');?>">Смартфоны</a></li>
-                        <li><a href="<?=Url::toRoute('page/listproducts?id=4');?>">Телевизоры</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=5');?>">Приставки</a></li>
                     </ul>
                 </div>

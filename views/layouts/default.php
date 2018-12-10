@@ -152,7 +152,6 @@ DefaultAsset::register($this);
                         <li><a href="<?=Url::toRoute('page/listproducts?id=1');?>">Ноутбуки</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=2');?>">Компьютеры</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=3');?>">Смартфоны</a></li>
-                        <li><a href="<?=Url::toRoute('page/listproducts?id=4');?>">Телевизоры</a></li>
                         <li><a href="<?=Url::toRoute('page/listproducts?id=5');?>">Приставки</a></li>
                     </ul>
                 </div>

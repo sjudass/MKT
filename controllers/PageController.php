@@ -45,10 +45,7 @@ class PageController extends Controller
             if(count($product) > 0)
             {
                 $characteristics = Characteristics::find()->where(['id_prod' => $product['id']])->asArray()->all();
-                $reviews = Reviews::find()->where(['id_prod' => $product['id']])->asArray()->all();
-                foreach ($reviews as $review){
-                    $users = Users::find()->where(['id' => $review['id_user']])->asArray()->all();
-                }
+
                 if (isset($_GET['category']))
                 {
                     $category = $_GET['category'];
