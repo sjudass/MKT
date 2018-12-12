@@ -116,7 +116,7 @@ class PageController extends Controller
 
                     }
                     $query = $query_select;
-                    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => $size]);
+                    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => $size, 'forcePageParam' => false, 'pageSizeParam' => false]);
                     $products_array = $query->offset($pages->offset)->limit($pages->limit)->all();
                    //Обработчик для формы сортировки
                 }

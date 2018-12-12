@@ -27,6 +27,30 @@ header{
 	float:left;
 	width:88%;
 }
+
+.btn{
+	background-color: #ff5b23;
+	border-color: #ff5b23;
+}
+.btn:hover{
+	background-color: #444444;
+	border-color: #444444;
+}
+.modal-footer .btn-default{
+	background-color: #fff;
+	border-color: #ccc;
+}
+.modal-footer .btn-success{
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+.modal-footer .btn-danger{
+	background-color: #d9534f;
+	border-color: #d43f3a;
+}
+.grid-view a{
+	color: #ff5b23;
+}
 .cart_top{
 	float: right;
     position: relative;
@@ -268,7 +292,7 @@ header{
 	background-color: #ff5b23;
     color: #fff;
     display: inline-block;
-    font-size: 30px;
+    font-size: 25px;
     height: 47px;
     padding: 5px 10px;
     float:left;
@@ -807,11 +831,19 @@ header{
 	text-decoration: none;
 }
 #w0.navbar{
+	 margin-bottom: 0px;
+	 border: 0px solid transparent;
+ }
+
+#w0-collapse li a:hover{
+	color:#ff5b23;
+}
+#w1.navbar{
 	margin-bottom: 0px;
 	border: 0px solid transparent;
 }
 
-#w0-collapse li a:hover{
+#w1-collapse li a:hover{
 	color:#ff5b23;
 }
 .value_cart input{
@@ -1067,6 +1099,18 @@ header{
 	    z-index: 111;
 	    padding-top: 10%;
 	}
+	#w1-collapse{
+		background-color: #000;
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 111;
+		padding-top: 10%;
+	}
 	.menu_top .navbar-toggle.active{
 		border-color: transparent;
 	    height: 22px;
@@ -1108,6 +1152,18 @@ header{
 	    border-right: 0px solid #2f2f2f;
 	}
 	#w0-collapse li a{
+		text-align: center;
+	}
+	#w1-collapse li{
+		float: none;
+		display: block;
+		position: relative;
+		width: 70%;
+		margin:0 auto;
+		border-left: 0px solid #2f2f2f;
+		border-right: 0px solid #2f2f2f;
+	}
+	#w1-collapse li a{
 		text-align: center;
 	}
 	.menu_top li a::before{

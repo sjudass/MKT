@@ -126,8 +126,7 @@ $this->title = 'Список товаров';
                         </div>
 
                         <div class="product_btn spisok">
-                            <a href="<?=Url::toRoute(['cart/add', 'id' => $product_array['id']]);?>" data-id="<?= $product_array['id'];?>" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="<?=Url::toRoute(['page/listorder', 'id' => $product_array['id']]);?>" class="mylist">Список желаний</a>
+                            <a href="<?=Url::toRoute(['cart/add', 'id' => $product_array['id']]);?>" data-id="<?= $product_array['id'];?>" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
                         </div>
                     </div>
                 </div>
@@ -149,8 +148,7 @@ $this->title = 'Список товаров';
                         </div>
 
                         <div class="product_btn">
-                            <a href="<?=Url::toRoute(['cart/add', 'id' => $product_array['id']]);?>" data-id="<?= $product_array['id'];?>" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                            <a href="<?=Url::toRoute(['page/listorder', 'id' => $product_array['id']]);?>" class="mylist">Список желаний</a>
+                            <a href="<?=Url::toRoute(['cart/add', 'id' => $product_array['id']]);?>" data-id="<?= $product_array['id'];?>" class="cart"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
                         </div>
                     </div>
                 </div>

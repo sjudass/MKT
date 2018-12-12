@@ -56,7 +56,7 @@ $this->title = $product['name'];
                             <button id="plus">+</button>
                         </form>
                         <a href="<?=Url::toRoute(['/cart/add', 'id' => $product['id']]);?>" data-id="<?=$product['id'];?>" class="add_cart_prod cart"><i class="glyphicon glyphicon-shopping-cart"></i> В корзину</a>
-                        <a href="#" class="add_mylist_prod"><i class="glyphicon glyphicon-heart"></i>В список желаний</a>
+                       <!-- <a href="#" class="add_mylist_prod"><i class="glyphicon glyphicon-heart"></i>В список желаний</a>-->
                     </div>
                 <?php else:?>
                     <div class="order_prod not-allowed">
@@ -88,59 +88,6 @@ $this->title = $product['name'];
                         <?php endforeach;?>
                     </table>
                 </div>
-<!--                <div class="r_prod">
-                    <?php /*if (!empty($reviews)):*/?>
-                    <h3>Отзывы:</h3>
-                    <div class="reviews">
-                        <?php /*foreach ($reviews as $review):*/?>
-                            <?php /*foreach ($users as $user):*/?>
-                                <div class="reviews_img">
-                                    <img src="../images/avatar.png">
-                                </div>
-                                <div class="reviews_contant">
-                                    <p class="reviews_title"><?/*=$user['username']*/?> <?/*=$user['user_surname']*/?><span><?/*=date("d.m.y",strtotime($review['data_create']));*/?></span></p>
-                                    <div class="reviews_rating">
-                                        <?php /*for ($i = 0; $i < $review['rating']; $i++):*/?>
-                                            <i class="glyphicon glyphicon-star active"></i>
-                                        <?php /*endfor;*/?>
-                                    </div>
-                                    <p class="reviews_text"><?/*=$review['text']*/?></p><br>
-                                </div>
-                            <?php /*endforeach;*/?>
-                        <?php /*endforeach;*/?>
-                    </div>
-                    <?php /*else:*/?>
-                        <h3>Отзывов пока нет</h3>
-                    <?php /*endif;*/?>
-                    <?php /*if (Yii::$app->user->isGuest): */?>
-                        <div class="reviews_form">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <p>Чтобы оставить отзыв <a href="<?/*=Url::toRoute('page/personal');*/?>">зарегистрируйтесь</a></p>
-                            </div>
-                        </div>
-                    <?php /*else: */?>
-                        <div class="reviews_form">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <p>Отзыв о товаре:</p>
-                            </div>
-                            <form action="/" method="post">
-                                <div class="col-lg-12">
-                                    <textarea name="text" placeholder="Отзыв"></textarea>
-                                </div>
-                                <div class="col-lg-12">
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                </div>
-                                <div class="col-lg-12">
-                                    <button>Добавить</button>
-                                </div>
-                            </form>
-                        </div>
-                    <?php /*endif;*/?>
-                </div>-->
             </div>
         </div>
     </div>

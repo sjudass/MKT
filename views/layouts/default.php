@@ -44,7 +44,7 @@ DefaultAsset::register($this);
                             <?php else: ?>
                                 <form method="post" action="/site/logout">
                                     <?php if (Yii::$app->user->identity['isAdmin'] > 0): ?>
-                                        <a href="<?=Url::toRoute('admin/index');?>"><i class="glyphicon glyphicon-user"></i>Панель администратора</a>
+                                        <a href="<?=Url::toRoute('/admin');?>"><i class="glyphicon glyphicon-user"></i>Панель администратора</a>
                                     <?php endif;?>
                                     <?= Html :: hiddenInput(\Yii :: $app->getRequest()->csrfParam, \Yii :: $app->getRequest()->getCsrfToken(), []);?>
                                     <button type="submit" style="color:white; background-color: inherit; border: none"><a><i class="glyphicon glyphicon-log-out"></i>Выйти</a></button>
@@ -170,7 +170,6 @@ DefaultAsset::register($this);
                         <li><a href="<?=Url::toRoute('page/login');?>">Войти</a></li>
                         <li><a href="#">Зарегистрироваться</a></li>
                         <li><a href="#">Мои заказы</a></li>
-                        <li><a href="#">Список желаний</a></li>
                     </ul>
                 </div>
             </div>

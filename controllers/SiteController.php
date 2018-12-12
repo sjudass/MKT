@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Country;
+use app\models\Categories;
+use app\models\Products;
 use app\models\RegisterForm;
-use app\models\TestForm;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -12,7 +12,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+
 
 class SiteController extends Controller
 {
@@ -65,8 +65,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $hits_array = Products::find()->where(['hit' => 1])->limit(8)->all();
+        foreach ($hits_array as $hit_array){
+            $hits_categories = Categories::find()->where(['id' => $hit_array['category_id']])->asArray()->one();
+        }
+        $news_array = Products::find()->where(['new' => 1])->limit(8)->all();
+        foreach ($news_array as $new_array){
+            $news_categories = Categories::find()->where(['id' => $new_array['category_id']])->asArray()->one();
+        }
+        $sales_array = Products::find()->where(['sale' => 1])->limit(8)->all();
+        foreach ($sales_array as $sale_array){
+            $sales_categories = Categories::find()->where(['id' => $sale_array['category_id']])->asArray()->one();
+        }
         $this->layout = "main";
-        return $this->render('index');
+        return $this->render('index', compact('hits_array', 'news_array', 'sales_array', 'hits_categories', 'news_categories', 'sales_categories'));
     }
 
     /**
@@ -131,69 +143,5 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-
-    public function actionMsg($msg = 'Hello')
-    {
-        return $this->render('message', ['msg' => $msg]);
-    }
-
-    public function actionTest()
-    {
-        $model = new TestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate())
-        {
-            return $this->render('Test-confirm', ['model' => $model]);
-        }
-        else
-        {
-            return $this->render('test', ['model' => $model]);
-        }
-    }
-
-    public function actionCountries()
-    {
-        $newcountry = new Country();
-
-        if ($newcountry->load(Yii::$app->request->post()) && $newcountry->validate())
-        {
-            if ($newcountry->save()){
-                Yii::$app->session->setFlash('success', 'Данные приняты');
-                return $this->refresh();
-            }
-            else{
-                Yii::$app->session->setFlash('error','Ошибка записи');
-            }
-        }
-        $countries = Country::find()->all();
-        return $this->render('countries', ['countries' => $countries, 'newcountry' => $newcountry]);
     }
 }
