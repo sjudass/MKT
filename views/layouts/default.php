@@ -39,10 +39,30 @@ DefaultAsset::register($this);
                 <div class="btn_and_search">
                     <div class="btn_top">
                             <?php if (Yii::$app->user->isGuest): ?>
+                                <script id="bx24_form_link" data-skip-moving="true">
+                                    (function(w,d,u,b){w['Bitrix24FormObject']=b;w[b] = w[b] || function(){arguments[0].ref=u;
+                                            (w[b].forms=w[b].forms||[]).push(arguments[0])};
+                                        if(w[b]['forms']) return;
+                                        var s=d.createElement('script');s.async=1;s.src=u+'?'+(1*new Date());
+                                        var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+                                    })(window,document,'https://b24-daiwlh.bitrix24.ru/bitrix/js/crm/form_loader.js','b24form');
+
+                                    b24form({"id":"4","lang":"ru","sec":"u3htk4","type":"link","click":""});
+                                </script><a class="b24-web-form-popup-btn-4"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
                                 <a href="<?=Url::toRoute('site/login');?>"><i class="glyphicon glyphicon-log-in"></i>Войти</a>
                                 <a href="<?=Url::toRoute('site/register');?>"><i class="glyphicon glyphicon-pencil"></i>Зарегистрироваться</a>
                             <?php else: ?>
                                 <form method="post" action="/site/logout">
+                                    <script id="bx24_form_link" data-skip-moving="true">
+                                        (function(w,d,u,b){w['Bitrix24FormObject']=b;w[b] = w[b] || function(){arguments[0].ref=u;
+                                                (w[b].forms=w[b].forms||[]).push(arguments[0])};
+                                            if(w[b]['forms']) return;
+                                            var s=d.createElement('script');s.async=1;s.src=u+'?'+(1*new Date());
+                                            var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+                                        })(window,document,'https://b24-daiwlh.bitrix24.ru/bitrix/js/crm/form_loader.js','b24form');
+
+                                        b24form({"id":"4","lang":"ru","sec":"u3htk4","type":"link","click":""});
+                                    </script><a class="b24-web-form-popup-btn-4"><i class="glyphicon glyphicon-map-marker"></i>Обратная связь</a>
                                     <?php if (Yii::$app->user->identity['isAdmin'] > 0): ?>
                                         <a href="<?=Url::toRoute('/admin');?>"><i class="glyphicon glyphicon-user"></i>Панель администратора</a>
                                     <?php endif;?>
@@ -92,18 +112,6 @@ DefaultAsset::register($this);
                         ['label' => 'Каталог', 'url' => ['/page/catalog']],
                         ['label' => 'Новости', 'url' => ['/page/news']],
                         ['label' => 'Контакты', 'url' => ['/page/contacts']],
-/*                        Yii::$app->user->isGuest ? (
-                        ['label' => 'Login', 'url' => ['/site/login']]
-                        ) : (
-                            '<li>'
-                            . Html::beginForm(['/site/logout'], 'post')
-                            . Html::submitButton(
-                                'Logout (' . Yii::$app->user->identity->username . ')',
-                                ['class' => 'btn btn-link logout']
-                            )
-                            . Html::endForm()
-                            . '</li>'
-                        )*/
                     ],
                 ]);
                 NavBar::end();
